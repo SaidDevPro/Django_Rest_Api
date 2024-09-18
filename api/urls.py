@@ -18,7 +18,6 @@ urlpatterns = [
     path('', include(router.urls))  # Включение маршрутов маршрутизатора
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Маршрут для получения токенов
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Маршрут для обновления токенов
-    
 ]
 
 urlpatterns.extend(router.urls)
