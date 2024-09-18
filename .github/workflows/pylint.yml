@@ -1,4 +1,4 @@
-name: Pylint
+name: Pylint and Autoformat
 
 on: [push]
 
@@ -22,3 +22,14 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
+    - name: Autoformat code with black
+      run: |
+        black $(git ls-files '*.py')
+    - name: Commit and push changes
+      if: github.ref == 'refs/heads/Django_Rest_Api/patch-1' 
+      run: |
+        git config --global user.email "ci@example.com"
+        git config --global user.name "GitHub Actions"
+        git add .
+        git commit -m "Autoformatted code with black" || echo "No changes to commit"
+        git push
