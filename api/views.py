@@ -7,7 +7,7 @@
     """
 
 from rest_framework import viewsets, permissions
-from .models import CustomUser, Product, Warehouse, Supply, Consumption
+from .models import CustomUser, Product, Warehouse, Supply
 from .serializers import (
     CustomUserSerializer,
     WarehouseSerializer,
