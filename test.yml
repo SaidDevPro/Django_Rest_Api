@@ -1,0 +1,31 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main  # Или укажите вашу основную ветку
+  pull_request:
+    branches:
+      - main  # Или укажите вашу основную ветку
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python 3.12.3
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.12.3'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        pytest  # Замените на вашу команду для запуска тестов, если используете другой фреймворк
